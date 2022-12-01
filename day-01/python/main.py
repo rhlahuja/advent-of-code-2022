@@ -6,7 +6,7 @@ def part_one(sums: list[int]) -> int:
 
 
 def part_two(sums: list[int]) -> int:
-    return sum(sorted(sums, reverse=True)[0:3])
+    return sum(sorted(sums, reverse=True)[:3])
 
 
 with open(pathlib.Path(__file__).parent.parent / 'input.txt') as f:

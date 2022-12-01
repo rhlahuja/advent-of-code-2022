@@ -8,7 +8,7 @@ fn part_one(sums: &[i32]) -> i32 {
 fn part_two(sums: &mut Vec<i32>) -> i32 {
     sums.sort();
     sums.reverse();
-    sums[0..3].iter().sum()
+    sums[..3].iter().sum()
 }
 
 fn main() {
