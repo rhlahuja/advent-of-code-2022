@@ -32,12 +32,12 @@ fn main() {
         })
         .collect();
 
-    let part_one = part_one(sums.as_slice());
-    let part_two = part_two(&mut sums.clone());
+    let part_one_solution = part_one(&sums);
+    let part_two_solution = part_two(&mut sums.clone());
 
-    println!("Part One: {}", part_one);
-    println!("Part Two: {}", part_two);
+    println!("Part One: {}", part_one_solution);
+    println!("Part Two: {}", part_two_solution);
 
-    assert_eq!(part_one, 75622);
-    assert_eq!(part_two, 213159);
+    assert_eq!(part_one_solution, 75622);
+    assert_eq!(part_two_solution, 213159);
 }

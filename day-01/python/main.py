@@ -1,14 +1,6 @@
 import pathlib
 
 
-def part_one(sums: list[int]) -> int:
-    return max(sums)
-
-
-def part_two(sums: list[int]) -> int:
-    return sum(sorted(sums, reverse=True)[:3])
-
-
 with open(pathlib.Path(__file__).parent.parent / 'input.txt') as f:
     sums = [
         sum(int(c) for c in calories.splitlines())
@@ -16,11 +8,11 @@ with open(pathlib.Path(__file__).parent.parent / 'input.txt') as f:
     ]
 
 
-part_one = part_one(sums)
-part_two = part_two(sums)
+part_one_solution = max(sums)
+part_two_solution = sum(sorted(sums, reverse=True)[:3])
 
-print('Part One:', part_one)
-print('Part Two:', part_two)
+print('Part One:', part_one_solution)
+print('Part Two:', part_two_solution)
 
-assert part_one == 75622
-assert part_two == 213159
+assert part_one_solution == 75622
+assert part_two_solution == 213159
