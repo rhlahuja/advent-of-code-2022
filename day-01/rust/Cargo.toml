@@ -1,0 +1,5 @@
+[package]
+name = "advent-of-code-2022-day-01"
+version = "0.1.0"
+authors = ["Rahul Ahuja"]
+edition = "2021"
