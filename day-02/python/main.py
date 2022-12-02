@@ -1,17 +1,17 @@
 import pathlib
 
 
-SHAPE_MAP = {'x': 1, 'y': 2, 'z': 3}
-OUTCOME_MAP = {
-    'a': {'x': 3, 'y': 6, 'z': 0},
-    'b': {'x': 0, 'y': 3, 'z': 6},
-    'c': {'x': 6, 'y': 0, 'z': 3},
-}
-
 
 def total_score(rounds: list[list[str]]) -> int:
+    shape_map = {'x': 1, 'y': 2, 'z': 3}
+    outcome_map = {
+        'a': {'x': 3, 'y': 6, 'z': 0},
+        'b': {'x': 0, 'y': 3, 'z': 6},
+        'c': {'x': 6, 'y': 0, 'z': 3},
+    }
+
     return sum(
-        SHAPE_MAP[my_shape] + OUTCOME_MAP[opponent_shape][my_shape]
+        shape_map[my_shape] + outcome_map[opponent_shape][my_shape]
         for opponent_shape, my_shape in rounds
     )
 
