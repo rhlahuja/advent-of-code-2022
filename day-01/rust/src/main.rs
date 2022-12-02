@@ -20,13 +20,13 @@ fn main() {
     )
     .unwrap();
 
-    let sums: Vec<i32> = input
+    let sums: Vec<_> = input
         .split("\n\n")
         .map(|calories| {
             calories
                 .lines()
                 .map(|line| line.parse().unwrap())
-                .collect::<Vec<i32>>()
+                .collect::<Vec<_>>()
                 .iter()
                 .sum()
         })
