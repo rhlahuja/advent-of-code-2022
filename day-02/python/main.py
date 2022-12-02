@@ -31,7 +31,7 @@ def part_two(rounds: list[list[str]]) -> int:
 
 
 with open(pathlib.Path(__file__).parent.parent / 'input.txt') as f:
-    rounds = [line.split(' ') for line in f.read().lower().splitlines()]
+    rounds = [line.split() for line in f.read().lower().splitlines()]
 
 
 part_one_solution = total_score(rounds)
