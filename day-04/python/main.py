@@ -20,8 +20,8 @@ with open(pathlib.Path(__file__).parent.parent / 'input.txt') as f:
     ranges = [
         [set(range(start, end + 1)) for start, end in interval]
         for interval in [
-            [[int(bound) for bound in bounds.split('-')] for bounds in interval]
-            for interval in [line.split(',') for line in f.read().splitlines()]
+            [[int(bound) for bound in bounds.split('-')] for bounds in bounded_range]
+            for bounded_range in [line.split(',') for line in f.read().splitlines()]
         ]
     ]
 
