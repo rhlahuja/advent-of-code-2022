@@ -6,16 +6,6 @@ def filtered_range_count(ranges: list[list[set[int]]], condition: Callable) -> i
     return len(list(filter(condition, ranges)))
 
 
-def part_one(ranges: list[list[set[int]]]) -> int:
-    return filtered_range_count(
-        ranges, lambda pair: pair[0].issubset(pair[1]) or pair[1].issubset(pair[0])
-    )
-
-
-def part_two(ranges: list[list[set[int]]]) -> int:
-    return filtered_range_count(ranges, lambda pair: pair[0].intersection(pair[1]))
-
-
 with open(pathlib.Path(__file__).parent.parent / 'input.txt') as f:
     ranges = [
         [set(range(start, end + 1)) for start, end in interval]
@@ -26,8 +16,12 @@ with open(pathlib.Path(__file__).parent.parent / 'input.txt') as f:
     ]
 
 
-part_one_solution = part_one(ranges)
-part_two_solution = part_two(ranges)
+part_one_solution = filtered_range_count(
+    ranges, lambda pair: pair[0].issubset(pair[1]) or pair[1].issubset(pair[0])
+)
+part_two_solution = filtered_range_count(
+    ranges, lambda pair: pair[0].intersection(pair[1])
+)
 
 print('Part One:', part_one_solution)
 print('Part Two:', part_two_solution)
