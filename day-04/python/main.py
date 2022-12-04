@@ -2,7 +2,9 @@ import pathlib
 from typing import Callable
 
 
-def filtered_range_count(ranges: list[list[set[int]]], condition: Callable) -> int:
+def filtered_range_count(
+    ranges: list[list[set[int]]], condition: Callable[[list[set[int]]], bool]
+) -> int:
     return len(list(filter(condition, ranges)))
 
 
