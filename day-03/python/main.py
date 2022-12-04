@@ -8,7 +8,10 @@ def common_character(strings: list[str]) -> str:
 
 
 def sum_priorities(strings: Iterable[list[str]]) -> int:
-    priority_map = {letter: i for i, letter in enumerate(string.ascii_letters, start=1)}
+    priority_map = {
+        letter: priority
+        for priority, letter in enumerate(string.ascii_letters, start=1)
+    }
     return sum(priority_map[common_character(group)] for group in strings)
 
 
