@@ -3,12 +3,12 @@ from collections import deque
 from typing import Callable, NoReturn
 
 
-def part_one(source: deque, destination: deque, quantity: int):
+def part_one_mover(source: deque, destination: deque, quantity: int):
     for _ in range(quantity):
         destination.appendleft(source.popleft())
 
 
-def part_two(source: deque, destination: deque, quantity: int):
+def part_two_mover(source: deque, destination: deque, quantity: int):
     destination.extendleft(reversed(list(source)[:quantity]))
     for _ in range(quantity):
         source.popleft()
@@ -36,8 +36,8 @@ with open(pathlib.Path(__file__).parent.parent / 'input.txt') as f:
     lines = f.read().splitlines()
 
 
-part_one_solution = move_crates(lines, part_one)
-part_two_solution = move_crates(lines, part_two)
+part_one_solution = move_crates(lines, part_one_mover)
+part_two_solution = move_crates(lines, part_two_mover)
 
 print('Part One:', part_one_solution)
 print('Part Two:', part_two_solution)
