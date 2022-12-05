@@ -5,14 +5,14 @@ use std::path::Path;
 use itertools::Itertools;
 
 fn filtered_range_count(
-    ranges: &Vec<Vec<HashSet<i32>>>,
-    condition: &dyn Fn(Vec<&HashSet<i32>>) -> bool,
-) -> i32 {
+    ranges: &Vec<Vec<HashSet<u32>>>,
+    condition: &dyn Fn(Vec<&HashSet<u32>>) -> bool,
+) -> u32 {
     ranges
         .iter()
         .filter(|pair| condition(pair.iter().collect_vec()))
         .collect_vec()
-        .len() as i32
+        .len() as u32
 }
 
 fn main() {

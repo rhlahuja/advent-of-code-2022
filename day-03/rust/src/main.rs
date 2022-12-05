@@ -12,10 +12,10 @@ fn common_character(strings: &[&str]) -> char {
     common_character.chars().next().unwrap()
 }
 
-fn sum_priorities(strings: &Vec<Vec<&str>>) -> i32 {
-    let mut priority_map: HashMap<char, i32> = HashMap::new();
+fn sum_priorities(strings: &Vec<Vec<&str>>) -> u32 {
+    let mut priority_map: HashMap<char, u32> = HashMap::new();
     for (i, character) in ('a'..='z').chain('A'..='Z').into_iter().enumerate() {
-        priority_map.insert(character, i as i32 + 1);
+        priority_map.insert(character, i as u32 + 1);
     }
 
     strings
@@ -30,7 +30,7 @@ fn sum_priorities(strings: &Vec<Vec<&str>>) -> i32 {
         .sum()
 }
 
-fn part_one(rucksacks: &Vec<&str>) -> i32 {
+fn part_one(rucksacks: &Vec<&str>) -> u32 {
     sum_priorities(
         &rucksacks
             .iter()
@@ -42,7 +42,7 @@ fn part_one(rucksacks: &Vec<&str>) -> i32 {
     )
 }
 
-fn part_two(rucksacks: &Vec<&str>) -> i32 {
+fn part_two(rucksacks: &Vec<&str>) -> u32 {
     sum_priorities(
         &rucksacks
             .into_iter()

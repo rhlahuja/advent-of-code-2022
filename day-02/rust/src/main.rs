@@ -4,7 +4,7 @@ use std::path::Path;
 
 use itertools::Itertools;
 
-fn total_score(rounds: &[Vec<&str>]) -> i32 {
+fn total_score(rounds: &[Vec<&str>]) -> u32 {
     let shape_map = HashMap::from([("x", 1), ("y", 2), ("z", 3)]);
     let outcome_map = HashMap::from([
         ("a", HashMap::from([("x", 3), ("y", 6), ("z", 0)])),
@@ -21,7 +21,7 @@ fn total_score(rounds: &[Vec<&str>]) -> i32 {
         .sum()
 }
 
-fn part_two(rounds: &[Vec<&str>]) -> i32 {
+fn part_two(rounds: &[Vec<&str>]) -> u32 {
     let move_map = HashMap::from([
         ("a", HashMap::from([("x", "z"), ("y", "x"), ("z", "y")])),
         ("b", HashMap::from([("x", "x"), ("y", "y"), ("z", "z")])),

@@ -5,39 +5,47 @@ from typing import Callable, NoReturn
 
 def part_one_mover(source: deque, destination: deque, quantity: int):
     for _ in range(quantity):
-        destination.appendleft(source.popleft())
+        destination.append(source.pop())
 
 
 def part_two_mover(source: deque, destination: deque, quantity: int):
-    destination.extendleft(reversed(list(source)[:quantity]))
+    destination.extend(list(source)[-quantity:])
     for _ in range(quantity):
-        source.popleft()
+        source.pop()
 
 
-def move_crates(lines: list[str], mover: Callable[[deque, deque, int], NoReturn]):
-    crates = [line[i] for i in range(1, 36, 4) for line in lines[:9]]
+def move_crates(
+    crates: list[str],
+    instructions: list[str],
+    mover: Callable[[deque, deque, int], NoReturn],
+):
     stacks = [
-        deque(position for position in crates[i : i + 8] if position != ' ')
+        deque(reversed([position for position in crates[i : i + 8] if position != ' ']))
         for i in range(0, len(crates), 9)
     ]
-
-    for line in lines[10:]:
+    for line in instructions:
         instruction = line.split(' from ')
         quantity = int(instruction[0].split('move ')[1])
-        source, destination = [
+        source, destination = (
             stacks[int(stack_number) - 1]
             for stack_number in instruction[1].split(' to ')
-        ]
+        )
         mover(source, destination, quantity)
-    return ''.join(stack[0] for stack in stacks)
+    return ''.join(stack[-1] for stack in stacks)
 
 
 with open(pathlib.Path(__file__).parent.parent / 'input.txt') as f:
     lines = f.read().splitlines()
+    crates = [line[i] for i in range(1, 36, 4) for line in lines[:9]]
+    instructions = lines[10:]
 
 
-part_one_solution = move_crates(lines, part_one_mover)
-part_two_solution = move_crates(lines, part_two_mover)
+part_one_solution = move_crates(
+    crates=crates, instructions=instructions, mover=part_one_mover
+)
+part_two_solution = move_crates(
+    crates=crates, instructions=instructions, mover=part_two_mover
+)
 
 print('Part One:', part_one_solution)
 print('Part Two:', part_two_solution)
