@@ -1,9 +1,7 @@
 use std::fs;
 use std::path::Path;
 
-fn part_one(sums: &[i32]) -> i32 {
-    *sums.iter().max().unwrap()
-}
+use itertools::Itertools;
 
 fn part_two(sums: &mut Vec<i32>) -> i32 {
     sums.sort();
@@ -26,13 +24,13 @@ fn main() {
             calories
                 .lines()
                 .map(|line| line.parse().unwrap())
-                .collect::<Vec<_>>()
+                .collect_vec()
                 .iter()
                 .sum()
         })
         .collect();
 
-    let part_one_solution = part_one(&sums);
+    let part_one_solution = *sums.iter().max().unwrap();
     let part_two_solution = part_two(&mut sums.clone());
 
     println!("Part One: {}", part_one_solution);

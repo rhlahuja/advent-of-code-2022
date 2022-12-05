@@ -4,7 +4,7 @@ use std::path::Path;
 
 use itertools::Itertools;
 
-fn common_character(strings: &Vec<&str>) -> char {
+fn common_character(strings: &[&str]) -> char {
     let common_character = &mut strings[0].to_string();
     for string in strings {
         common_character.retain(|e| string.contains(e));
@@ -20,8 +20,12 @@ fn sum_priorities(strings: &Vec<Vec<&str>>) -> i32 {
 
     strings
         .iter()
-        .map(|strings| *priority_map.get(&common_character(strings)).unwrap())
-        .collect::<Vec<_>>()
+        .map(|strings| {
+            *priority_map
+                .get(&common_character(strings.as_slice()))
+                .unwrap()
+        })
+        .collect_vec()
         .iter()
         .sum()
 }
