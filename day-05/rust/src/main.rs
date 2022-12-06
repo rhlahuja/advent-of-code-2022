@@ -67,11 +67,6 @@ fn move_crates(
             .unwrap();
 
         mover(&mut stacks, *source_index, *destination_index, *quantity);
-
-        // println!("instruction: {:?}", &instruction);
-        // println!("quantity: {:?}", &quantity);
-        // println!("source index: {:?}", &source_index);
-        // println!("dest index: {:?}", &destination_index);
     }
 
     stacks
